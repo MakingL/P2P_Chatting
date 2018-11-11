@@ -223,8 +223,9 @@ class Chatting(object):
                                                                   " {}, are you want chat with"
                                                                   " him?".format(sender_name))
                     if new_chatting:
-                        new_chatting_peer_obj = PeerInfo(sender_name, sender_ip, sender_port)
-                        self.create_new_chat_window(new_chatting_peer_obj)
+                        # new_chatting_peer_obj = PeerInfo(sender_name, sender_ip, sender_port)
+                        # self.create_new_chat_window(new_chatting_peer_obj)
+                        self.set_chatting_peer(sender_name, sender_ip, sender_port)
                     # 如果用户同意与新用户建立连接，则创建线程，建立一个新的窗口对象
 
                 if is_chatting_peer_message is True:
