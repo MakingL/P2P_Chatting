@@ -99,7 +99,7 @@ class LoginAndSignUp(object):
                                                textvariable=self.var_server_ip)
         self.var_server_port = tk.StringVar()
         # 设置服务器端口号默认值
-        self.var_server_port.set(51569)
+        self.var_server_port.set(45354)
         self.widget_entry_server_port = tk.Entry(frm_2,
                                                  textvariable=self.var_server_port)
 

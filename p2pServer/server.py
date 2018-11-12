@@ -11,7 +11,7 @@ from socketserver import StreamRequestHandler, ThreadingTCPServer
 from time import sleep
 
 HOST = ""
-PORT = 51569
+PORT = 45354
 ADDR = (HOST, PORT)
 
 # 当前活跃的用户信息
@@ -34,14 +34,12 @@ class ServerHandler(StreamRequestHandler):
 
     def handle(self):
 
-        print("Got connection from {}".format(self.client_address))
         peer_ip, request_port = self.client_address
 
         # 解析收到的数据
         for line_data in self.rfile:
             # print(line_data)
             data = json.loads(line_data, encoding="UTF-8")
-            print(data)
 
             if "action" in data:
                 action = data["action"]
@@ -88,13 +86,6 @@ class ServerHandler(StreamRequestHandler):
                         with open(USER_INFO_PATH, "wb") as f1:
                             pickle.dump(existed_usr_info, f1)
 
-                        # # 登记心跳数据
-                        # peer_port = data["peer_port"]
-                        # time_now = datetime.now()
-                        # time_now = time_now.strftime("%Y-%m-%d-%X")
-                        # peer_data_new = (time_now, peer_ip, peer_port)
-                        # peer_heart_dict[data["peer_name"]] = peer_data_new
-
                         # 注册成功
                         result = {"status": "true"}
 
@@ -138,10 +129,9 @@ def update_peer_list():
         for peer_name, peer_data in peer_heart_dict.items():
             log_time, _, _ = peer_data
 
-            print("Peer: {} {}".format(peer_name, peer_data))
+            # print("Peer: {} {}".format(peer_name, peer_data))
 
             time_now = datetime.now()
-            # log_time = datetime.strftime("%Y-%m-%d-%X")
             time_delta = time_now - datetime.strptime(log_time, "%Y-%m-%d-%X")
             if time_delta.seconds > 30:
                 delete_peer.append(peer_name)
@@ -150,7 +140,7 @@ def update_peer_list():
             peer_name_set.remove(peer)
 
             peer_heart_dict.pop(peer)
-            print("{} has been delete".format(peer))
+            # print("{} has been delete".format(peer))
 
         # 定时 30s 刷新一次
         sleep(30)
