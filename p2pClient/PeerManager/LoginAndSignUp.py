@@ -142,8 +142,6 @@ class LoginAndSignUp(object):
         server_ip = self.var_server_ip.get()
         server_port = self.var_server_port.get()
 
-        # print("server ip: {} type: {}".format(server_ip, type(server_ip)))
-        # print("server server_port: {} type: {}".format(server_port, type(server_port)))
         if server_ip is None or len(server_ip) == 0:
             tk.messagebox.showwarning(title="Server ip is empty",
                                       message="Server ip is empty, please input server ip")
@@ -160,7 +158,6 @@ class LoginAndSignUp(object):
     def get_local_host(self):
         local_port = self.var_local_port.get()
 
-        # print("local port: {} type: {}".format(local_port, type(local_port)))
         if local_port is None or len(local_port) == 0:
             tk.messagebox.showwarning(title="Local port is empty",
                                       message="Local port that local host listening is empty,"
@@ -174,8 +171,6 @@ class LoginAndSignUp(object):
         usr_name = self.var_usr_name.get()
         usr_pwd = self.var_usr_pwd.get()
 
-        # print("User name: {} type: {}".format(usr_name, type(usr_name)))
-        # print("User password: {} type: {}".format(usr_pwd, type(usr_pwd)))
         if usr_name is None or len(usr_name) == 0:
             tk.messagebox.showwarning(title="User name is empty",
                                       message="User name is empty, please input user name")
@@ -186,7 +181,6 @@ class LoginAndSignUp(object):
             return False
 
         # 发起登录请求
-        # if not self.server_info_obj.is_set_server_info():
         # 从界面上获取服务器信息
         server_ip, server_port = self.get_server_info()
         local_port = self.get_local_host()

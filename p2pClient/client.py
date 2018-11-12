@@ -70,16 +70,12 @@ class LocalKnownServerHandler(StreamRequestHandler):
                                                               " him?".format(peer_name))
                 if new_chatting:
                     if window_manager.has_unused_window():
-                        print("Has unused window")
                         chatting_peer_obj = window_manager.get_unused_window()
-                        print("Got unused window: {}".format(chatting_peer_obj))
-                        print("peer_name: {}".format(peer_name))
                         chatting_peer_obj.set_info(user_info, server_info,
                                                    server_connection,
                                                    chatting_peer_name=peer_name)
                         window_manager.set_window_connection(chatting_peer_obj, peer_name)
                     else:
-                        print("Create new window")
                         # 创建聊天界面管理对象
                         chatting_peer_obj = Chatting(user_info, server_info,
                                                      server_connection, window_manager,
@@ -88,7 +84,6 @@ class LocalKnownServerHandler(StreamRequestHandler):
                         chatting_peer_obj.refresh_contact_list_info(active_peer_info_list)
                         window_manager.add_chatting_window(peer_name, chatting_peer_obj)
 
-                    print("Put message: {}  {}".format(chatting_peer_obj, message_data))
                     chatting_peer_obj.put_message(message_data)
             else:
                 # 存在聊天界面

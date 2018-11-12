@@ -58,7 +58,6 @@ class Chatting(object):
         self._window_load_lock = threading.Lock()
 
     def refresh_contact_list_info(self, peer_list_info):
-        # print("peer info: {}".format(peer_list_info))
         active_peer_name_set = set()
         self.active_peer_node_info.clear()
         for peer_node in peer_list_info:
@@ -104,7 +103,6 @@ class Chatting(object):
         :param message:
         :return:
         """
-        print("Got message: {}".format(message))
         # 将消息添加到自己的消息队列中
         self.message_queue.put(message)
 
