@@ -28,6 +28,9 @@ P2P聊天中各个成员管理。每个成员称为一个peer，要有一个中�
 * 步骤4：如果第3个用户U3@P3发送一条消息到U1@P1，如果U1此时正好有一个Messaging GUI与U3进行交互，那么就显示消息，如果没有，就要提示U1有新消息到来。两个User之间可以相互发送消息，每对User之间有一个单独的Messaging GUI。
 
 ## 软件组成
+### 环境
+ **Python 3.6.5**
+
 技术栈
 * Tkinter     界面
 * ThreadingTCPServer
